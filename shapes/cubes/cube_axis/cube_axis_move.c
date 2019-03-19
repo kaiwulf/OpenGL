@@ -5,7 +5,9 @@
 #include <sys/time.h>	// System and OpenGL Stuff
 #include <math.h>
 #include <stdio.h>
-#include <../../glTools/gltools.h>
+// #include <string.h>
+
+#include "../../../glTools/gltools.h"
 
 void axis();
 
@@ -16,6 +18,7 @@ static GLfloat zaxis = -1.0f;
 GLTFrame frameCamera;
 
 void RenderScene() {
+    float frame = 10.0f;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
@@ -34,7 +37,7 @@ void RenderScene() {
     glPopMatrix();
     // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glOrtho(-10.0f,10.0f,-10.0f,10.0f,-10.0f,10.0f);
+    glOrtho(-frame,frame,-frame,frame,-frame,frame);
 
     axis();
 
@@ -63,6 +66,23 @@ void processNormalKeys(unsigned char key, int x, int y) {
     }
 
 }
+
+// Initialize a frame of reference. 
+// Uses default OpenGL viewing position and orientation
+void gltInitFrame(GLTFrame *pFrame)
+    {
+    pFrame->vLocation[0] = 0.0f;
+    pFrame->vLocation[1] = 0.0f;
+    pFrame->vLocation[2] = 0.0f;
+    
+    pFrame->vUp[0] = 0.0f;
+    pFrame->vUp[1] = 1.0f;
+    pFrame->vUp[2] = 0.0f;
+    
+    pFrame->vForward[0] = 0.0f;
+    pFrame->vForward[1] = 0.0f;
+    pFrame->vForward[2] = -1.0f;
+    }
 
 void specialKeys(int key, int x, int y) {
 
@@ -143,7 +163,8 @@ void Reshape(int w, int h) {
     glLoadIdentity();
     // gluLookAt(20, 5, 5, -20, 5, 5, 0, 1, 0)
 
-    gluPerspective(45.0f, fAspect, 1.0f, 1.0f);
+    // gluPerspective(45.0f, fAspect, 1.0f, 1.0f);
+    gluPerspective(35.0f, fAspect, 1.0f, 50.0f);
 
     glMatrixMode(GL_MODELVIEW);
     glLoadIdentity();
