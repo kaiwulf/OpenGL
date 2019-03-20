@@ -22,7 +22,7 @@ void RenderScene() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
-	glTranslatef(0.0f, 0.0f, -1.0f);
+	glTranslatef(0.5f, 0.0f, 0.0f);
 /*
     gluLookAt(  -10.0f, 0.0f, 0.0f,
             0.0f, 0.0f,  0.0f,
@@ -69,20 +69,20 @@ void processNormalKeys(unsigned char key, int x, int y) {
 
 // Initialize a frame of reference. 
 // Uses default OpenGL viewing position and orientation
-void gltInitFrame(GLTFrame *pFrame)
-    {
-    pFrame->vLocation[0] = 0.0f;
-    pFrame->vLocation[1] = 0.0f;
-    pFrame->vLocation[2] = 0.0f;
+// void gltInitFrame(GLTFrame *pFrame)
+//     {
+//     pFrame->vLocation[0] = 0.0f;
+//     pFrame->vLocation[1] = 0.0f;
+//     pFrame->vLocation[2] = 0.0f;
     
-    pFrame->vUp[0] = 0.0f;
-    pFrame->vUp[1] = 1.0f;
-    pFrame->vUp[2] = 0.0f;
+//     pFrame->vUp[0] = 0.0f;
+//     pFrame->vUp[1] = 1.0f;
+//     pFrame->vUp[2] = 0.0f;
     
-    pFrame->vForward[0] = 0.0f;
-    pFrame->vForward[1] = 0.0f;
-    pFrame->vForward[2] = -1.0f;
-    }
+//     pFrame->vForward[0] = 0.0f;
+//     pFrame->vForward[1] = 0.0f;
+//     pFrame->vForward[2] = -1.0f;
+//     }
 
 void specialKeys(int key, int x, int y) {
 
@@ -108,7 +108,7 @@ void specialKeys(int key, int x, int y) {
 
 void SetupRC() {
     // Initialize the camera
-    gltInitFrame(&frameCamera);
+    // gltInitFrame(&frameCamera);
 
     // Black background color
     glClearColor(0.0f,0.0f,0.0f,1.0f);
