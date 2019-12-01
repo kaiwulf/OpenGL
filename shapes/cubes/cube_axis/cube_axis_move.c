@@ -9,6 +9,8 @@
 
 #include "../../../glTools/gltools.h"
 
+void gltInitFrame(GLTFrame *pFrame);
+
 void axis();
 
 static GLfloat xRot = 45.0f;
@@ -18,11 +20,11 @@ static GLfloat zaxis = -1.0f;
 GLTFrame frameCamera;
 
 void RenderScene() {
-    float frame = 10.0f;
+    float frame = -1.0f;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // glClear(GL_COLOR_BUFFER_BIT);
-	glLoadIdentity();
-	glTranslatef(0.5f, 0.0f, 0.0f);
+	// glLoadIdentity();
+	glTranslatef(0.0f, 0.0f, -3.0f);
 /*
     gluLookAt(  -10.0f, 0.0f, 0.0f,
             0.0f, 0.0f,  0.0f,
@@ -35,11 +37,18 @@ void RenderScene() {
     glPushMatrix();
     glTranslatef(0.0f, 0.0f, zaxis);
     glPopMatrix();
-    // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+    
+    //Initialize Projection Matrix
+    glMatrixMode( GL_PROJECTION );
+    glLoadIdentity();
+
     glOrtho(-frame,frame,-frame,frame,-frame,frame);
 
     axis();
+
+        //Initialize Modelview Matrix
+    glMatrixMode( GL_MODELVIEW );
+    glLoadIdentity();
 
     glColor3f(1.0f, 1.0f, 1.0f);
     glutWireCube(1.0f);

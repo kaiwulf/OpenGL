@@ -29,6 +29,7 @@
 #include <GL/glut.h>
 #include <GL/glext.h>
 #include <sys/time.h>
+#include <string.h>
 #endif
 
 // Universal includes
