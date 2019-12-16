@@ -14,17 +14,13 @@ static GLfloat zaxis = -1.0f;
 
 GLfloat dim = 10.0f;    /* dimension of box */
 GLfloat asp = 1.0f;     /* aspect ratio */
+GLfloat frame = 10.0;
 
 void RenderScene() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // glClear(GL_COLOR_BUFFER_BIT);
 	glLoadIdentity();
-	glTranslatef(0.5f, 0.5f, -1.0f);
-/*
-    gluLookAt(  -10.0f, 0.0f, 0.0f,
-            0.0f, 0.0f,  0.0f,
-            0.0f, 0.0f,  0.0f);
-*/
+	glTranslatef(0.5f, 0.5f, 0.5f);
 
     glRotatef(xRot, 1.0f, 0.0f, 0.0f);
     glRotatef(yRot, 0.0f, 1.0f, 0.0f);
@@ -32,8 +28,8 @@ void RenderScene() {
 
     // glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
     // glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
-    glOrtho(-dim*asp,dim*asp,dim,-dim,-dim,dim);
-
+    // glOrtho(dim*asp,dim*asp,dim,-dim,-dim,dim);
+    glOrtho(-frame,frame,-frame,frame,-frame,frame);
     axis();
 
     glColor3f(1.0f, 1.0f, 1.0f);
@@ -103,18 +99,18 @@ void axis() {
     glBegin(GL_LINES);
 
     // x-axis
-    glColor3f(1.0f, 0.0f, 0.0f);
-    glVertex3i(0, 0, 0);
+    glColor3f(1.0f, 0.0f, 0.0f);  //red
+    glVertex3i(-10, 0, 0);
     glVertex3i(10, 0, 0);
 
     // y-axis
-    glColor3f(0.0f, 1.0f, 0.0f);
-    glVertex3i(0, 0, 0);
+    glColor3f(0.0f, 1.0f, 0.0f);  //green
+    glVertex3i(0, -10, 0);
     glVertex3i(0, 10, 0);
 
     // z-axis
-    glColor3f(0.0f, 0.0f, 1.0f);
-    glVertex3i(0, 0, 0);
+    glColor3f(0.0f, 0.0f, 1.0f);  //blue
+    glVertex3i(0, 0, -10);
     glVertex3i(0, 0, 10);
 
     glEnd();

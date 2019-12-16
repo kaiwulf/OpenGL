@@ -22,17 +22,15 @@ GLTFrame frameCamera;
 void RenderScene() {
     float frame = -1.0f;
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-    // glClear(GL_COLOR_BUFFER_BIT);
-	// glLoadIdentity();
-	glTranslatef(0.0f, 0.0f, -3.0f);
-/*
-    gluLookAt(  -10.0f, 0.0f, 0.0f,
-            0.0f, 0.0f,  0.0f,
-            0.0f, 0.0f,  0.0f);
-*/
 
-        glRotatef(xRot, 1.0f, 0.0f, 0.0f);
-    glRotatef(yRot, 0.0f, 1.0f, 0.0f);
+    // Save the matrix state and do the rotations
+    glMatrixMode(GL_MODELVIEW);
+    glPushMatrix();
+
+	glTranslatef(0.5f, 0.5f, 0.5f);
+
+    // glRotatef(xRot, 1.0f, 0.0f, 0.0f);
+    // glRotatef(yRot, 0.0f, 1.0f, 0.0f);
 
     glPushMatrix();
     glTranslatef(0.0f, 0.0f, zaxis);
@@ -137,17 +135,17 @@ void axis() {
     glBegin(GL_LINES);
 
     // x-axis
-    glColor3f(1.0f, 0.0f, 0.0f);
+    glColor3f(1.0f, 0.0f, 0.0f);  //red
     glVertex3i(0, 0, 0);
     glVertex3i(10, 0, 0);
 
     // y-axis
-    glColor3f(0.0f, 1.0f, 0.0f);
+    glColor3f(0.0f, 1.0f, 0.0f);  //green
     glVertex3i(0, 0, 0);
     glVertex3i(0, 10, 0);
 
     // z-axis
-    glColor3f(0.0f, 0.0f, 1.0f);
+    glColor3f(0.0f, 0.0f, 1.0f);  //blue
     glVertex3i(0, 0, 0);
     glVertex3i(0, 0, 10);
 
