@@ -23,12 +23,15 @@ void RenderScene(void)
 	// Earth and Moon angle of revolution
 	static float fMoonRot = 0.0f;
 	static float fEarthRot = 0.0f;
+	static float fMarsRot = 0.0f;
 
 	// Clear the window with current clearing color
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
 	// Save the matrix state and do the rotations
 	glMatrixMode(GL_MODELVIEW);
+
+
 	glPushMatrix();
 
 	// Translate the whole scene out and into view	
@@ -52,6 +55,15 @@ void RenderScene(void)
 	glTranslatef(105.0f,0.0f,0.0f);
 	glutSolidSphere(15.0f, 30, 17);
 
+
+	glColor3ub(255, 0, 0);
+	glRotatef(fMarsRot, 0.0f, 1.0f, 0.0f);
+	glTranslatef(60.0f, 0.0f, 0.0f);
+	glutSolidSphere(7.5f, 30, 17);
+
+	fMarsRot += 5;
+	if(fMarsRot > 360.0f)
+		fMarsRot = 0.0f;
 
 	// Rotate from Earth based coordinates and draw Moon
 	glColor3ub(200,200,200);
