@@ -1,8 +1,5 @@
-// Solar.c
-// OpenGL SuperBible
-// Demonstrates OpenGL nested coordinate transformations
-// and perspective
-// Program by Richard S. Wright Jr.
+// system.c, a modification of solar.c
+// from OpenGL SuperBible by Ricard S. Wright Jr.
 
 #include <GL/gl.h>
 #include <GL/glu.h>
