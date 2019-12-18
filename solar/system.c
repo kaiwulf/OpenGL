@@ -21,6 +21,7 @@ void RenderScene(void)
 	static float fMoonRot = 0.0f;
 	static float fEarthRot = 0.0f;
 	static float fMarsRot = 0.0f;
+	static float fSubMoonRot = 0.0f;
 
 	// Clear the window with current clearing color
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
@@ -44,6 +45,19 @@ void RenderScene(void)
 	// Move the light after we draw the sun!
 	glLightfv(GL_LIGHT0,GL_POSITION,lightPos);
 
+		glPushMatrix();
+
+	glColor3ub(255, 0, 0);
+	glRotatef(fMarsRot, 0.0f, 1.0f, 0.0f);
+	glTranslatef(60.0f, 0.0f, 0.0f);
+	glutSolidSphere(7.5f, 30, 17);
+
+	glPopMatrix();
+
+	fMarsRot += 1;
+	if(fMarsRot > 360.0f)
+		fMarsRot = 0.0f;
+
 	// Rotate coordinate system
 	glRotatef(fEarthRot, 0.0f, 1.0f, 0.0f);
 
@@ -51,16 +65,6 @@ void RenderScene(void)
 	glColor3ub(0,0,255);
 	glTranslatef(105.0f,0.0f,0.0f);
 	glutSolidSphere(15.0f, 30, 17);
-
-
-	glColor3ub(255, 0, 0);
-	glRotatef(fMarsRot, 0.0f, 1.0f, 0.0f);
-	glTranslatef(60.0f, 0.0f, 0.0f);
-	glutSolidSphere(7.5f, 30, 17);
-
-	fMarsRot += 5;
-	if(fMarsRot > 360.0f)
-		fMarsRot = 0.0f;
 
 	// Rotate from Earth based coordinates and draw Moon
 	glColor3ub(200,200,200);
@@ -71,6 +75,16 @@ void RenderScene(void)
 		fMoonRot = 0.0f;
 
 	glutSolidSphere(6.0f, 30, 17);
+
+	// Rotate from Moon based coordinates and draw sub-moon
+	glColor3ub(255, 0, 0);
+	glRotatef(fSubMoonRot, 0.0f, 1.0f, 0.0f);
+	glTranslatef(60.0f, 0.0f, 0.0f);
+	glutSolidSphere(3.0f, 30, 17);
+
+	fSubMoonRot += 1;
+	if(fSubMoonRot > 360.0f)
+		fSubMoonRot = 0.0f;
 
 	// Restore the matrix state
 	glPopMatrix();	// Modelview matrix
