@@ -82,7 +82,7 @@ void RenderScene(void)
 	glTranslatef(60.0f, 0.0f, 0.0f);
 	glutSolidSphere(3.0f, 30, 17);
 
-	fSubMoonRot += 1;
+	fSubMoonRot += 0.5;
 	if(fSubMoonRot > 360.0f)
 		fSubMoonRot = 0.0f;
 
