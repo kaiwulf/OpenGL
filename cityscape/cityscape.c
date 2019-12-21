@@ -1,8 +1,6 @@
-// SphereWorld.c
-// OpenGL SuperBible
-// Demonstrates an immersive 3D environment using actors
-// and a camera.
-// Program by Richard S. Wright Jr.
+// cityscape.c
+// Adaption of sphereworld.c from OpenGL Superbible 3rd edition
+// by Richard S. Wright Jr.
 
 #include <GL/gl.h>
 #include <GL/glu.h>
