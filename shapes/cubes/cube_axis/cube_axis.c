@@ -7,6 +7,7 @@
 #include <stdio.h>
 
 void axis();
+void kaiWireSquare(float, float, float);
 
 static GLfloat xRot = 45.0f;
 static GLfloat yRot = 0.0f;
@@ -33,9 +34,16 @@ void RenderScene() {
     axis();
 
     glColor3f(1.0f, 1.0f, 1.0f);
-    glutWireCube(1.0f);
+    // glutWireCube(1.0f);
+    kaiWireSquare(1.0f, 1.0f, 1.0f);
 
    glutSwapBuffers();
+}
+
+void kaiWireSquare(float x, float y, float z) {
+
+    glBegin(GL_QUADS);
+        
 }
 
 void processNormalKeys(unsigned char key, int x, int y) {
